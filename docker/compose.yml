@@ -1,0 +1,22 @@
+services:
+  php:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: php
+    restart: always
+    working_dir: /var/www/
+    volumes:
+      - ../:/var/www/
+      - ./configs/php.ini:/usr/local/etc/php/conf.d/custom.ini
+  caddy:
+   image: caddy:2.8.4-alpine
+   container_name: caddy
+   restart: always
+   cap_add:
+    - NET_ADMIN
+   ports:
+    - "8000:80"
+   volumes:
+    - ../:/var/www/
+    - ./configs/caddy:/etc/caddy/Caddyfile

@@ -1,0 +1,13 @@
+:80 {
+
+    root * /var/www/public/
+
+    encode zstd gzip
+
+    php_fastcgi php:9000
+
+    @dotFiles {  
+      path */.*  
+      not path /.well-known/*  
+    }
+}
