@@ -33,7 +33,7 @@ class Router
         $action = $this->routes[$method][$route] ?? null;
 
         if (!$action) {
-            throw new Error('hmm wokring on it');
+            return call_user_func_array([new Controller\Home, 'error'], []);
         }
 
         $class = new $action[0];

@@ -2,10 +2,17 @@
 
 namespace App\Controller;
 
+use App\View;
+
 class Home
 {
-    public function main()
+    public function main(): View
     {
-        return 'main';
+        return View::make('home', ['params' => 'random']);
+    }
+
+    public function error()
+    {
+        echo 'bad route';
     }
 }
