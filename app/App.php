@@ -16,7 +16,7 @@ class App
 
     public function render(): array
     {
-        $path = $_SERVER['REQUEST_URI'];
+        $path = strtok($_SERVER['REQUEST_URI'], '?');
         $method = $_SERVER['REQUEST_METHOD'];
         return $this->router->resolve($path, $method);
     }

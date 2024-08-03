@@ -25,10 +25,9 @@ class Router
         return $this->register('POST', $route, $action);
     }
 
-    public function resolve(string $path, string $method)
+    public function resolve(string $path, string $method): array
     {
-        $route = strtok($path, '?');
-        $action = $this->routes[$method][$route] ?? null;
+        $action = $this->routes[$method][$path] ?? null;
 
         if (!$action) {
             return call_user_func_array([new Controller\Error, 'RouteNotFound'], []);
