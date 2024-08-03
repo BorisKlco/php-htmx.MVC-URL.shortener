@@ -1,0 +1,30 @@
+<?php
+
+namespace App;
+
+class App
+{
+    public function __construct(
+        private Router $router = new Router(),
+    ) {
+    }
+
+    public function route(): Router
+    {
+        return $this->router;
+    }
+
+    public function render(): array
+    {
+        $path = $_SERVER['REQUEST_URI'];
+        $method = $_SERVER['REQUEST_METHOD'];
+        return $this->router->resolve($path, $method);
+    }
+
+    public function response()
+    {
+        [$status, $content] = $this->render();
+        http_response_code($status);
+        return $content;
+    }
+}

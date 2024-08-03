@@ -2,8 +2,6 @@
 
 namespace App;
 
-use Error;
-
 class Router
 {
     private array $routes = [];
@@ -29,11 +27,11 @@ class Router
 
     public function resolve(string $path, string $method)
     {
-        $route = explode('?', $path)[0];
+        $route = strtok($path, '?');
         $action = $this->routes[$method][$route] ?? null;
 
         if (!$action) {
-            return call_user_func_array([new Controller\Home, 'error'], []);
+            return call_user_func_array([new Controller\Error, 'RouteNotFound'], []);
         }
 
         $class = new $action[0];

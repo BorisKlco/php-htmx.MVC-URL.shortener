@@ -3,16 +3,15 @@
 namespace App\Controller;
 
 use App\View;
+use App\Response;
 
-class Home
+class Home extends Response
 {
-    public function main(): View
-    {
-        return View::make('home', ['params' => 'random']);
-    }
 
-    public function error()
+    public function main(): array
     {
-        echo 'bad route';
+        $this->status = 200;
+        $this->content = View::make('home');
+        return $this->response();
     }
 }
