@@ -21,7 +21,7 @@ class App
         return $this->router->resolve($path, $method);
     }
 
-    public function response()
+    public function response(): string
     {
         [$status, $content] = $this->render();
         http_response_code($status);

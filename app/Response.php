@@ -9,7 +9,7 @@ class Response
     protected int $status;
     protected View $content;
 
-    public function response()
+    public function response(): array
     {
         return [$this->status, $this->content];
     }

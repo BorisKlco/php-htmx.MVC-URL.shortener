@@ -1,11 +1,25 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <title>Home</title>
+</head>
 
-$string = "This is an    example string";
-/* Use tab and newline as tokenizing characters as well  */
-$tok = strtok($string, " ");
+<body>
+    <div class="header">
+        <nav>
+            <img class="logo" src="static/26F1.svg" alt="">
+            <a href="#">Home</a>
+            <a href="#">Stats</a>
+        </nav>
+        <button class="login"><span>Sign in</span></button>
+    </div>
 
-while ($tok !== false) {
-    echo "$tok<br />";
-    $tok = strtok(".");
-}
+    <h1>Shorten links and generate QR codes.</h1>
+
+</body>
+
+</html>
