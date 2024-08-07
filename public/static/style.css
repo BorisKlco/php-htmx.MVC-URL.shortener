@@ -11,30 +11,63 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 90%;
     margin: auto;
+    background: rgb(255,254,251);
+    background: linear-gradient(150deg, rgba(255,254,251,1) 0%, rgba(254,245,235,1) 100%);
 }
 
+
+.hero {
+    height: 600px;
+    background-image: url('/static/hero.webp');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;   
+    margin: 3rem auto 0;
+    width: 1368px;
+}
+
+.hero h1 {
+    text-align: center;
+}
 
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 1000px;
+    margin: auto;
+
 }
 
 nav {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    font-size: 2rem;
+    gap: 5rem;
+    font-size: 24px;
+}
+
+.nav-selection {
+    display: flex;
+    gap: 2rem;
+    
+}
+
+.nav-selection a {
+    text-decoration: none;
+    color:black;
+}
+.nav-selection a:hover {
+    text-decoration: underline;
 }
 
 .logo {
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
 }
 
 .login {
+    margin-right: 1rem;
     font-family: "Itim", sans-serif;
     padding: 0.3rem 0.8rem;
     background-color: #F38877;
@@ -42,7 +75,7 @@ nav {
     color:white;
     border-radius: 8px;
     text-align: center;
-    font-size: 32px;
+    font-size: 24px;
     cursor: pointer;
     box-shadow: 0px 1px 1px rgb(0 0 0 / 0.2);
     text-shadow: 0px 1px 1px #ACDFDE;
@@ -55,15 +88,4 @@ nav {
     border: 2px solid #F38877;
     background-color: #FEF5EB;
     color:rgb(0 0 0 / 0.7);
-}
-
-@media (min-width:936px) {
-    body {
-        font-family: "Itim", sans-serif;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        max-width: 60%;
-        margin: auto;
-    }
 }

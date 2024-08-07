@@ -12,13 +12,17 @@
     <div class="header">
         <nav>
             <img class="logo" src="static/26F1.svg" alt="">
-            <a href="#">Home</a>
-            <a href="#">Stats</a>
+            <div class="nav-selection">
+                <a href="#">Home</a>
+                <a href="#">Stats</a>
+            </div>
         </nav>
         <button class="login"><span>Sign in</span></button>
     </div>
+    <div class="hero">
 
-    <h1>Shorten links and generate QR codes.</h1>
+        <h1>Shorten links and generate QR codes.</h1>
+    </div>
 
 </body>
 
