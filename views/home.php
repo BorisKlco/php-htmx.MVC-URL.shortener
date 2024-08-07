@@ -11,7 +11,7 @@
 <body>
     <div class="header">
         <nav>
-            <img class="logo" src="static/26F1.svg" alt="">
+            <img class="logo" src="static/logo.svg" alt="">
             <div class="nav-selection">
                 <a href="#">Home</a>
                 <a href="#">Stats</a>
@@ -22,6 +22,11 @@
     <div class="hero">
 
         <h1>Shorten links and generate QR codes.</h1>
+
+        <div class="hero-main">
+            <div></div>
+            <div class="hero-input">123</div>
+        </div>
     </div>
 
 </body>
