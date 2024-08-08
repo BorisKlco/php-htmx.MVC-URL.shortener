@@ -55,6 +55,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
+    justify-content: center;
 }
 
 .input-info {
@@ -124,6 +125,25 @@ nav {
 
 /* input */
 
+.hero-submit-button {
+    font-family: "Itim", sans-serif;
+    padding: 0.25rem 0.75rem;
+    background-color: #1C2A43;
+    color:white;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 50ms ease-in-out;
+    border: 1px solid #4780AD
+}
+
+.hero-submit-button:hover {
+    transition: all 50ms ease-in-out;
+    background-color: #FEF5EB;
+    color:rgb(0 0 0 / 0.7);
+}
+
 .link-icon {
     width: 24px;
     height: 24px;
@@ -176,4 +196,12 @@ nav {
 .checkbox-span {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    font-size: 15px;
+}
+
+.checkbox-span input {
+    width: 12px;
+    height: 12px;
+    margin: 2px;
 }

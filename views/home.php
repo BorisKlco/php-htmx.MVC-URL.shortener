@@ -36,11 +36,13 @@
                     </div>
                 </form>
                 <div class="hero-div-submit">
-                    <span class="checkbox-span">
-                        <input type="checkbox" checked>
-                        <p class="checkbox-info">Insert fake views</p>
+                    <span class="checkbox-span" title="To see statistics">
+                        <input type="checkbox" id="checkbox-id">
+                        <label for="checkbox-id">
+                            <p style="user-select: none;">Insert views</p>
+                        </label>
                     </span>
-                    <button>Send</button>
+                    <button class="hero-submit-button">Generate</button>
                 </div>
             </div>
         </div>
