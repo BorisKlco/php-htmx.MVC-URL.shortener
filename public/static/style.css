@@ -23,13 +23,14 @@ body {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;   
-    margin: 3rem auto 0;
+    margin: auto ;
     max-width: 1368px;
     width: 100%;
 }
 
-.hero h1 {
+.h1-info {
     text-align: center;
+    margin-top: 1rem;
 }
 
 .hero-main {
@@ -42,6 +43,7 @@ body {
 }
 
 .hero-input {
+    padding: 1.5rem 2rem;
     height: 250px;
     width: 500px;
     background-color: #C4E8E799;
@@ -50,6 +52,14 @@ body {
     border-radius: 30px;
     margin-left: 10%;
     margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.input-info {
+    text-align: center;
+    font-size: 24px;
 }
 
 .header {
@@ -92,7 +102,7 @@ nav {
     margin-right: 1rem;
     font-family: "Itim", sans-serif;
     padding: 0.3rem 0.8rem;
-    background-color: #F38877;
+    background-color: #1C2A43;
     border: 1px solid black;
     color:white;
     border-radius: 6px;
@@ -101,13 +111,69 @@ nav {
     cursor: pointer;
     box-shadow: 0px 1px 1px rgb(0 0 0 / 0.2);
     text-shadow: 0px 1px 1px #ACDFDE;
-    transition: background-color 0.1s ease;
+    transition: all 50ms ease-in-out;
 }
 
 .login:hover {
-    transition: background-color 0.1s ease;
-    box-shadow: 0px 1px 1px #F38877;
-    border: 2px solid #F38877;
+    transition: all 50ms ease-in-out;
+    box-shadow: 0px 1px 2px #F38877;
+    border: 1px solid #F38877;
     background-color: #FEF5EB;
     color:rgb(0 0 0 / 0.7);
+}
+
+/* input */
+
+.link-icon {
+    width: 24px;
+    height: 24px;
+    background-image: url('link.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Adjust as needed */
+    border: 1px solid #4780AD; /* Default border style similar to Bootstrap */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.input-group-addon {
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-control {
+    flex: 1;
+    padding: 6px 12px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    background-color: #FEF5EB;
+}
+
+.form-control::placeholder {
+    color: #6c757d; /* Placeholder color similar to Bootstrap */
+}
+
+.input-group:focus-within {
+    border-color: #1c2a43c4; /* Change border color on focus */
+    box-shadow: 0 0 2px #1c2a43c4; /* Optional: Add a subtle shadow */
+}
+
+.hero-div-submit {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.checkbox-span {
+    display: flex;
+    flex-direction: row;
 }
