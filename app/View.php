@@ -7,8 +7,7 @@ class View
     public function __construct(
         protected string $view,
         protected array $params = []
-    ) {
-    }
+    ) {}
 
     public static function make(string $view, array $params = []): static
     {
@@ -18,7 +17,8 @@ class View
     public function render(): string
     {
         ob_start();
-        include VIEW_PATH . $this->view . '.php';
+        $view = $this->view;
+        include VIEW_PATH . 'template.php';
         return (string) ob_get_clean();
     }
 

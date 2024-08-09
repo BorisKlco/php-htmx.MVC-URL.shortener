@@ -205,3 +205,8 @@ nav {
     height: 12px;
     margin: 2px;
 }
+
+.stats-main {
+    height: 600px;
+    background-color: #1C2A43;
+}
