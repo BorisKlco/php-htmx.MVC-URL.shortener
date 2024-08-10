@@ -7,7 +7,8 @@ require_once __DIR__ . '/../app/path.php';
 
 $app = new App();
 
-$app->route()->get('/', [Controller\Home::class, 'main']);
-$app->route()->get('/stats', [Controller\Home::class, 'stats']);
+$app->route()->get('/', [Controller\Home::class, 'index']);
+$app->route()->get('/stats', [Controller\Stats::class, 'index']);
+$app->route()->post('/generate', [Controller\Stats::class, 'generate']);
 
 echo $app->response();

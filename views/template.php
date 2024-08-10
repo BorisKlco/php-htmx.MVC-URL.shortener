@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/style.css">
-    <title>Home</title>
+    <title><?= $data['title'] ?></title>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
         <button class="login"><span>Sign in</span></button>
     </div>
 
-    <?php include VIEW_PATH . $view . '.php'; ?>
+    <?php include_once VIEW_PATH . $view . '.php'; ?>
 
 </body>
 

@@ -6,7 +6,7 @@
         <div></div>
         <div class="hero-input">
             <p class="input-info">Use URL shortener or QR generator and keep track of your connections...</p>
-            <form action="">
+            <form action="/generate" method="post" id="generate-form">
                 <div class="input-group">
                     <span class="input-group-addon">
                         <i class="link-icon"></i>
@@ -21,7 +21,7 @@
                         <p style="user-select: none;">Insert views</p>
                     </label>
                 </span>
-                <button class="hero-submit-button">Generate</button>
+                <button class="hero-submit-button" form="generate-form">Generate</button>
             </div>
         </div>
     </div>

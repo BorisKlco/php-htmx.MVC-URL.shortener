@@ -8,17 +8,15 @@ use App\Response;
 class Home extends Response
 {
 
-    public function main(): array
+    public function index(): array
     {
         $this->status = 200;
-        $this->content = View::make('home');
-        return $this->response();
-    }
-
-    public function stats(): array
-    {
-        $this->status = 200;
-        $this->content = View::make('stats');
+        $this->content = View::make(
+            'home',
+            [
+                'title' => 'Home Page'
+            ]
+        );
         return $this->response();
     }
 }

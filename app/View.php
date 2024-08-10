@@ -18,7 +18,10 @@ class View
     {
         ob_start();
         $view = $this->view;
-        include VIEW_PATH . 'template.php';
+        $data = $this->params ?: [
+            'title' => 'Default title'
+        ];
+        include_once VIEW_PATH . 'template.php';
         return (string) ob_get_clean();
     }
 

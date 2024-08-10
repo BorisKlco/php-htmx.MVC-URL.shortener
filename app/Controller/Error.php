@@ -11,7 +11,12 @@ class Error extends Response
     public function RouteNotFound(): array
     {
         $this->status = 404;
-        $this->content = View::make('Error/RouteNotFound');
+        $this->content = View::make(
+            'Error/RouteNotFound',
+            [
+                'title' => 'Page not found..'
+            ]
+        );
         return $this->response();
     }
 }

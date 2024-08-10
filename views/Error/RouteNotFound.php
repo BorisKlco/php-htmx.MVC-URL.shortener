@@ -1,3 +1,3 @@
 <?php
 
-echo 'RouteNotFound';
+echo 'Rout not found';
