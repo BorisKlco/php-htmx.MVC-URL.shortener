@@ -43,8 +43,9 @@ body {
 }
 
 .hero-input {
-    padding: 1.5rem 2rem;
-    height: 250px;
+    padding: 2.5rem 2rem;
+    min-height: 225px;
+    max-height: 400px;
     width: 500px;
     background-color: #C4E8E799;
     backdrop-filter: blur(3px);
@@ -191,6 +192,7 @@ nav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 1.5rem;
 }
 
 .checkbox-span {

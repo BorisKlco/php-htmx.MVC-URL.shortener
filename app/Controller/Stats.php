@@ -41,7 +41,7 @@ class Stats extends Response
 
         $this->status = 200;
         $this->content = View::make(
-            'home',
+            'stats',
             [
                 'title' => 'Stats'
             ]

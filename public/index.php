@@ -10,5 +10,6 @@ $app = new App();
 $app->route()->get('/', [Controller\Home::class, 'index']);
 $app->route()->get('/stats', [Controller\Stats::class, 'index']);
 $app->route()->post('/generate', [Controller\Stats::class, 'generate']);
+$app->route()->post('/test', [Controller\Home::class, 'test']);
 
 echo $app->response();

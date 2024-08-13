@@ -19,4 +19,10 @@ class Home extends Response
         );
         return $this->response();
     }
+
+    public function test()
+    {
+        return [200,'<img src="static/qr.svg">'];
+    }
+    
 }
