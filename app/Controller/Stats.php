@@ -43,9 +43,10 @@ class Stats extends Response
         $this->content = View::make(
             'stats',
             [
-                'title' => 'Stats'
+                'title' => 'Analytics'
             ]
         );
+        return [200,$link];
         return $this->response();
     }
 
@@ -59,6 +60,7 @@ class Stats extends Response
             ]
         );
 
+        return [418,'<input name="link" placeholder="Pleas fill valid link." class="form-control" type="url">'];
         return $this->response();
     }
 }

@@ -1,1 +1,7 @@
-<h1 class="h1-info">Stats</h1>
+<h1 class="h1-info">Analytics</h1>
+
+<div class="stats">
+    <div>
+
+    </div>
+</div>
