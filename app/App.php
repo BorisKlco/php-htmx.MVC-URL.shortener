@@ -2,17 +2,11 @@
 
 namespace App;
 
-
 class App
 {
     public function __construct(
-        private Router $router = new Router(),
-        // private \PDO $db = new DB([
-        //     'host' => $_ENV['DB_HOST'],
-        //     'db' => $_ENV['DB'],
-        //     'usr' => $_ENV['DB_USER'],
-        //     'psw' => $_ENV['DB_PASS'],
-        // ])
+        private Router $router,
+        private DB $db
     ) {}
 
     public function route(): Router

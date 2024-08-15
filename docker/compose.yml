@@ -9,6 +9,8 @@ services:
     volumes:
       - ../:/var/www/
       - ./configs/php.ini:/usr/local/etc/php/conf.d/custom.ini
+    command: |
+      sh -c "composer install && php-fpm"
   caddy:
    image: caddy:2.8.4-alpine
    container_name: caddy
