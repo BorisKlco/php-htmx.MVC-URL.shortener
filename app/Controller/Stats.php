@@ -8,13 +8,29 @@ use App\Response;
 class Stats extends Response
 {
 
-    public function index(): array
+    public function index(string $data = ''): array
     {
+        if ($data) {
+            return $this->linkStats($data);
+        }
         $this->status = 200;
         $this->content = View::make(
             'stats',
             [
                 'title' => 'Stats'
+            ]
+        );
+        return $this->response();
+    }
+
+    public function linkStats(string $data): array
+    {
+        echo $data;
+        $this->status = 200;
+        $this->content = View::make(
+            'stats',
+            [
+                'title' => '1Stats'
             ]
         );
         return $this->response();

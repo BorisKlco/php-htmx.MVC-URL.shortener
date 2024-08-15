@@ -27,7 +27,9 @@ class Router
 
     public function resolve(string $path, string $method): array
     {
-        $action = $this->routes[$method][$path] ?? null;
+        $route = strtok($path, "/") ?: '/';
+        $data = strtok("/");
+        $action = $this->routes[$method][$route] ?? null;
 
         if (!$action) {
             return call_user_func_array([new Controller\Error, 'RouteNotFound'], []);
@@ -35,6 +37,6 @@ class Router
 
         $class = new $action[0];
 
-        return call_user_func_array([$class, $action[1]], []);
+        return call_user_func_array([$class, $action[1]], [$data]);
     }
 }
