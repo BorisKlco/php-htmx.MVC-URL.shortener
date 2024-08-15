@@ -214,3 +214,11 @@ nav {
     height: 600px;
     background-color: #1C2A43;
 }
+
+.qr {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 6px;
+    border-color: #1c2a43c4;
+    box-shadow: 0 0 1px #1c2a43c4; 
+}

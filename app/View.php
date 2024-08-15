@@ -6,12 +6,13 @@ class View
 {
     public function __construct(
         protected string $view,
-        protected array $params = []
+        protected array $params,
+        protected bool $template
     ) {}
 
-    public static function make(string $view, array $params = []): static
+    public static function make(string $view, array $params = [], bool $template = true): static
     {
-        return new static($view, $params);
+        return new static($view, $params, $template);
     }
 
     public function render(): string
@@ -21,7 +22,11 @@ class View
         $data = $this->params ?: [
             'title' => 'Default title'
         ];
-        include_once VIEW_PATH . 'template.php';
+        if ($this->template) {
+            include_once VIEW_PATH . 'template.php';
+        } else {
+            include_once VIEW_PATH . "$view.php";
+        }
         return (string) ob_get_clean();
     }
 

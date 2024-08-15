@@ -35,18 +35,18 @@ class Stats extends Response
         $link = "$scheme://" . $host . $path . $query;
         $link = filter_var($link, FILTER_VALIDATE_URL);
 
-        if (!$link) {
+        if (!$link || strlen($link) > 250) {
             return $this->wrongLink();
         }
 
         $this->status = 200;
         $this->content = View::make(
-            'stats',
+            'generate',
             [
-                'title' => 'Analytics'
-            ]
+                'link' => $link
+            ],
+            false
         );
-        return [200,$link];
         return $this->response();
     }
 
@@ -60,7 +60,7 @@ class Stats extends Response
             ]
         );
 
-        return [418,'<input name="link" placeholder="Pleas fill valid link." class="form-control" type="url">'];
+        return [418, '<input name="link" placeholder="Pleas fill valid link." class="form-control" type="url">'];
         return $this->response();
     }
 }
