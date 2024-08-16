@@ -4,12 +4,37 @@
     <div>
         <?php
         $stats = \App\DB::fetch_all();
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 0;
+        ?>
 
-        foreach ($stats as $row) {
-            echo $row['orig_url']; // replace with your column names
-            echo '<br>';
-        }
+        <table>
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Orig Url</td>
+                    <td>Short Url</td>
+                    <td>Stats Url</td>
+                    <td>User</td>
+                    <td>Added</td>
+                </tr>
+            </thead>
+            <tbody>
 
+                <?php foreach ($stats as $row) : ?>
+                    <tr>
+                        <td><?= $row["id"] ?></td>
+                        <td><?= $row["orig_url"] ?></td>
+                        <td><?= $row["short_url"] ?></td>
+                        <td><?= $row["stats_url"] ?></td>
+                        <td><?= $row["nick"] ?></td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+
+        <?php
+        echo '<a href="?page=' . max(0, $page - 1) . '">Previous</a> | ';
+        echo '<a href="?page=' . ($page + 1) . '">Next</a>';
         ?>
 
     </div>
