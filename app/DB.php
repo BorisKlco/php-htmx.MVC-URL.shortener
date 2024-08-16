@@ -32,8 +32,21 @@ class DB
         return static::$pdo;
     }
 
-    public static function test()
+    public static function fetch_all(): array
     {
-        return self::$pdo;
+        $db = self::$pdo;
+
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 0;
+        $offset = abs($page) * 10;
+
+        $sql = "SELECT * FROM links LIMIT 10 OFFSET :offset";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll();
+
+        return $result;
     }
 }

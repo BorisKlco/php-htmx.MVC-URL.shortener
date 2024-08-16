@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\View;
 use App\Response;
-use App\DB;
 
 class Home extends Response
 {
