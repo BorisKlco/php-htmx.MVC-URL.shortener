@@ -1,6 +1,7 @@
 .stats {
     height: 100%;
     width: 100%;
+	margin-top: 3rem;
     display: flex;
     align-content: center;
     justify-content: space-around;
@@ -9,7 +10,6 @@
 
 table {
 	border-collapse: collapse;
-    font-family: Tahoma, Geneva, sans-serif;
 }
 table td {
 	padding: 15px;

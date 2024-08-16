@@ -5,6 +5,12 @@
         <?php
         $stats = \App\DB::fetch_all();
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 0;
+
+        function ctime($time)
+        {
+            $convert = new DateTime($time);
+            return $convert->format('d/m/Y');
+        }
         ?>
 
         <table>
@@ -27,6 +33,7 @@
                         <td><?= $row["short_url"] ?></td>
                         <td><?= $row["stats_url"] ?></td>
                         <td><?= $row["nick"] ?></td>
+                        <td><?= ctime($row["added"]) ?></td>
                     </tr>
                 <?php endforeach ?>
             </tbody>
