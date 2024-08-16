@@ -4,12 +4,15 @@ namespace App\Controller;
 
 use App\View;
 use App\Response;
+use App\DB;
 
 class Home extends Response
 {
 
     public function index(): array
     {
+        // echo '<pre>';
+        // print_r($_SERVER);
         $this->status = 200;
         $this->content = View::make(
             'home',

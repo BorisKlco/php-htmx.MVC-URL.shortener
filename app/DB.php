@@ -31,4 +31,9 @@ class DB
     {
         return static::$pdo;
     }
+
+    public static function test()
+    {
+        return self::$pdo;
+    }
 }

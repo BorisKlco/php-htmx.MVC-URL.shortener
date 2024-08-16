@@ -25,7 +25,6 @@ class Stats extends Response
 
     public function linkStats(string $data): array
     {
-        echo $data;
         $this->status = 200;
         $this->content = View::make(
             'stats',

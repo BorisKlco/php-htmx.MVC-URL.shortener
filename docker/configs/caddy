@@ -12,4 +12,10 @@
       path */.*  
       not path /.well-known/*  
     }
+
+    @disallowed {
+      path /xmlrpc.php
+      path *.sql
+      path /wp-content/uploads/*.php
+  }
 }

@@ -31,4 +31,13 @@ services:
     ports:
       - 3306:3306
     volumes:
+      - ../db.sql:/home/db.sql
       - ../db/mysql:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpMyAdmin
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
