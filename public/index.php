@@ -21,6 +21,7 @@ $app = new App(
 $app->route()->get('/', [Controller\Home::class, 'index']);
 $app->route()->get('i', [Controller\Home::class, 'link']);
 $app->route()->get('stats', [Controller\Stats::class, 'index']);
+$app->route()->get('s', [Controller\Stats::class, 'linkStats']);
 $app->route()->post('generate', [Controller\Stats::class, 'generate']);
 
 echo $app->response();

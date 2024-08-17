@@ -48,4 +48,38 @@ class DB
 
         return $result;
     }
+
+    public static function if_exist(string $code): array | bool
+    {
+        $db = self::$pdo;
+        $sql = "INSERT INTO links(link, code) VALUES(:link, :code)";
+        $sql = "SELECT id FROM links WHERE code = :code";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':code', $code, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $fetch = $stmt->fetch();
+
+        return $fetch;
+    }
+
+    public static function add_link(string $link, string $code): void
+    {
+        $db = self::$pdo;
+        $sql = "INSERT INTO links(link, code) VALUES(:link, :code)";
+
+        try {
+            $stmt = $db->prepare($sql);
+
+            $stmt->execute([
+                ':link' => $link,
+                ':code' => $code
+            ]);
+
+            $id = $db->lastInsertId();
+        } catch (\Throwable $th) {
+            echo "add link error " . $th;
+        }
+    }
 }

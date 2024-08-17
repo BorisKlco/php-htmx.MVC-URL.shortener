@@ -4,12 +4,6 @@
     <?php
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 0;
     $stats = \App\DB::fetch_all($page);
-
-    function ctime($time)
-    {
-        $convert = new DateTime($time);
-        return $convert->format('d/m/Y');
-    }
     ?>
     <div class="table">
         <table>
@@ -26,7 +20,7 @@
                         <td>
                             <a href=<?= $row["short_url"] ?>><?= $row["short_url"] ?> </a>
                         </td>
-                        <td><?= ctime($row["added"]) ?></td>
+                        <td><?= \App\Helper::ctime($row["added"]) ?></td>
                     </tr>
                 <?php endforeach ?>
             </tbody>

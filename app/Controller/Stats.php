@@ -4,15 +4,14 @@ namespace App\Controller;
 
 use App\View;
 use App\Response;
+use App\Helper;
+use App\DB;
 
 class Stats extends Response
 {
 
-    public function index(string $data = ''): array
+    public function index(): array
     {
-        if ($data) {
-            return $this->linkStats($data);
-        }
 
         $this->status = 200;
         $this->content = View::make(
@@ -24,8 +23,9 @@ class Stats extends Response
         return $this->response();
     }
 
-    public function linkStats(string $data): array
+    public function linkStats(string $data = ''): array
     {
+        echo $data;
         $this->status = 200;
         $this->content = View::make(
             'stats',
@@ -38,28 +38,27 @@ class Stats extends Response
 
     public function generate(): array
     {
-        $scheme = parse_url($_POST['link'], PHP_URL_SCHEME);
-        $host = parse_url($_POST['link'], PHP_URL_HOST);
-        $path = parse_url($_POST['link'], PHP_URL_PATH);
-        $query = parse_url($_POST['link'], PHP_URL_QUERY);
-        $query = $query ? "?$query" : '';
+        $link = Helper::sanitize($_POST['link']);
 
-        if ($scheme != 'https' && $scheme != 'http') {
+        if (!$link) {
             return $this->wrongLink();
         }
 
-        $link = "$scheme://" . $host . $path . $query;
-        $link = filter_var($link, FILTER_VALIDATE_URL);
+        $code = Helper::getCode();
+        $if_exist = (bool)DB::if_exist($code);
 
-        if (!$link || strlen($link) > 250) {
-            return $this->wrongLink();
+        while ($if_exist) {
+            $code = Helper::getCode();
         }
+
+        DB::add_link($link, $code);
 
         $this->status = 200;
         $this->content = View::make(
             'generate',
             [
-                'link' => $link
+                'link' => $link,
+                'code' => $code
             ],
             false
         );
