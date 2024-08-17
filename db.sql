@@ -1,19 +1,18 @@
 CREATE TABLE `links`(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `orig_url` VARCHAR(255) NOT NULL,
-    `short_url` VARCHAR(255) NOT NULL,
-    `stats_url` VARCHAR(255) NOT NULL,
+    `link` VARCHAR(255) NOT NULL,
+    `code` VARCHAR(255) NOT NULL,
     `user` VARCHAR(255) DEFAULT NULL,
     `added` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    UNIQUE (`short_url`, `stats_url`)
+    UNIQUE (`code`)
 );
 
 CREATE TABLE `visit`(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `link` VARCHAR(255) NOT NULL,
+    `code` VARCHAR(255) NOT NULL,
     `user_agent` VARCHAR(255) NOT NULL,
     `ip` VARCHAR(255) NOT NULL,
     `time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT `stats_link` FOREIGN KEY (`link`) REFERENCES `links`(`short_url`) ON DELETE CASCADE
+    CONSTRAINT `add_visit` FOREIGN KEY (`code`) REFERENCES `links`(`code`) ON DELETE CASCADE
 );
 

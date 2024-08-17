@@ -49,7 +49,7 @@ class DB
         return $result;
     }
 
-    public static function fetch_user_link(string $code): string
+    public static function fetch_user_link(string $code, array $data): string
     {
         $db = self::$pdo;
 
@@ -57,13 +57,14 @@ class DB
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':code', $code, PDO::PARAM_STR);
-        try {
-            $stmt->execute();
-            $result = $stmt->fetch();
-            return $result['link'];
-        } catch (\Throwable $th) {
-            return 'https://google.com';
-        }
+        // try {
+        $stmt->execute();
+        $result = $stmt->fetch();
+        $add_visit = self::add_visit($code, $data);
+        return $result['link'];
+        // } catch (\Throwable $th) {
+        //     return 'https://google.com';
+        // }
     }
 
     public static function if_exist(string $code): array | bool
@@ -97,6 +98,28 @@ class DB
             $id = $db->lastInsertId();
         } catch (\Throwable $th) {
             echo "add link error " . $th;
+        }
+    }
+
+    private static function add_visit(string $code, array $data): int
+    {
+        $db = self::$pdo;
+        $sql = "INSERT INTO visit(code, user_agent,ip) VALUES(:code, :agent, :ip)";
+
+        try {
+            $stmt = $db->prepare($sql);
+
+            $stmt->execute([
+                ':code' => $code,
+                ':agent' => $data[0],
+                ':ip' => $data[1],
+            ]);
+
+            $id = $db->lastInsertId();
+            return $id;
+        } catch (\Throwable $th) {
+            echo "add_visit_error: " . $th;
+            return 0;
         }
     }
 }
