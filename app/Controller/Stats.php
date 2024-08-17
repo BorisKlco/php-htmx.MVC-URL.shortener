@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\View;
 use App\Response;
-use App\DB;
 
 class Stats extends Response
 {
@@ -15,7 +14,6 @@ class Stats extends Response
             return $this->linkStats($data);
         }
 
-        DB::fetch_all();
         $this->status = 200;
         $this->content = View::make(
             'stats',
