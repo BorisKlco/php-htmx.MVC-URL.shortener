@@ -1,7 +1,7 @@
 <?php
 $link = $data['link'];
 $code = $data['code'];
-// $qr = 'https://quickchart.io/qr?text=' . $data['link'] . '&margin=1&size=200';
+// $qr = 'https://quickchart.io/qr?text=' . $link . '&margin=1&size=200';
 $qr = 'https://yap.pw/static/qr.svg';
 ?>
 
@@ -10,13 +10,15 @@ $qr = 'https://yap.pw/static/qr.svg';
     <div style="display: flex;flex-direction: column;gap: 2rem;">
         <ul>
             <p>Link:</p>
-            <a href="#" target="_blank" rel="noopener noreferrer">
+            <a href=<?= "https://yap.pw/i/$code" ?>
+                target="_blank" rel="noopener noreferrer">
                 <?= "https://yap.pw/i/$code" ?>
             </a>
         </ul>
         <ul>
             <p>Analytics:</p>
-            <a href="#" target="_blank" rel="noopener noreferrer">
+            <a href=<?= "https://yap.pw/s/$code" ?>
+                target="_blank" rel="noopener noreferrer">
                 <?= "https://yap.pw/s/$code" ?>
             </a>
         </ul>

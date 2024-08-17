@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\View;
 use App\Response;
+use App\DB;
 
 class Home extends Response
 {
@@ -22,17 +23,12 @@ class Home extends Response
         return $this->response();
     }
 
-    public function link(string $data = ''): array
+    public function link(string $data = ''): void
     {
-        echo $data;
-        $this->status = 200;
-        $this->content = View::make(
-            'home',
-            [
-                'title' => 'Home Page'
-            ]
-        );
-        return $this->response();
+        $fetch = DB::fetch_user_link($data);
+
+        header("Location: " . $fetch);
+        die();
     }
 
     public function test()

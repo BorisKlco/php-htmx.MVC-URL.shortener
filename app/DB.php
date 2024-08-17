@@ -49,6 +49,23 @@ class DB
         return $result;
     }
 
+    public static function fetch_user_link(string $code): string
+    {
+        $db = self::$pdo;
+
+        $sql = "SELECT link FROM links WHERE code = :code";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':code', $code, PDO::PARAM_STR);
+        try {
+            $stmt->execute();
+            $result = $stmt->fetch();
+            return $result['link'];
+        } catch (\Throwable $th) {
+            return 'https://google.com';
+        }
+    }
+
     public static function if_exist(string $code): array | bool
     {
         $db = self::$pdo;
@@ -59,9 +76,9 @@ class DB
         $stmt->bindParam(':code', $code, PDO::PARAM_STR);
         $stmt->execute();
 
-        $fetch = $stmt->fetch();
+        $result = $stmt->fetch();
 
-        return $fetch;
+        return $result;
     }
 
     public static function add_link(string $link, string $code): void

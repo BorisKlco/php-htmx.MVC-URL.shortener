@@ -18,7 +18,9 @@
                 <?php foreach ($stats as $row) : ?>
                     <tr>
                         <td>
-                            <a href=<?= $row["short_url"] ?>><?= $row["short_url"] ?> </a>
+                            <a href=<?= "https://yap.pw/s/" . $row["code"] ?>>
+                                <?= "https://yap.pw/i/" . $row["code"] ?>
+                            </a>
                         </td>
                         <td><?= \App\Helper::ctime($row["added"]) ?></td>
                     </tr>
