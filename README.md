@@ -1,13 +1,13 @@
 # php/htmx custom MVC and router
 
-Site for generating shorter URL links, QR code and storing statistics as clicks/time visited.
+This project provides a site for generating shorter URL links, QR codes, and storing statistics such as clicks and visit times.
 
-- Routes are define in public/index.php / support for non define routes as 404/error.
-- Response to client will send HTTP status code and view.
-- Response is able to send just part for HTMX swapping or full page linked by templates and vies.
-- app/Contoller/\* extends Response.php, defined controller response with status code and view.
-- app/Helper.php and app/DB.php is for db calls and custom functions for controllers.
-- app/path.php for defining path to directiories/folders.
+- Routes are defined in `public/index.php`, with support for undefined routes resulting in a 404/error response.
+- The response sent to the client will include an HTTP status code and a view.
+- Responses can either send a partial update for HTMX swapping or render a full page linked by a template and view.
+- Controllers in `app/Controller/*` extend `Response.php`, defining the response with a status code and view.
+- `app/Helper.php` and `app/DB.php` handle database calls and custom functions for controllers.
+- `app/path.php` defines paths to directories/folders.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/BorisKlco/php.short-link/main/public/static/1.jpg" style="width:100%" />
