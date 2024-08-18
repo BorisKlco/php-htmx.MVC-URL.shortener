@@ -1,3 +1,4 @@
+name: yap
 services:
   php:
     build:

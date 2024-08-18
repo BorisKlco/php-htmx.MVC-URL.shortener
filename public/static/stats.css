@@ -8,7 +8,8 @@
 	gap:2rem;
 }
 
-.table {
+.table,
+.stats-table {
 	width: 100%;
 	max-width: 800px;
 }
@@ -21,7 +22,7 @@ table tbody tr:hover {
 table td {
 	padding: 8px;
 }
-table td:last-child {
+.stats-table td:last-child {
 	width: 10%;
 	min-width: 5%;
 }

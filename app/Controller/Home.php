@@ -11,8 +11,6 @@ class Home extends Response
 
     public function index(): array
     {
-        // echo '<pre>';
-        // print_r($_SERVER);
         $this->status = 200;
         $this->content = View::make(
             'home',
@@ -32,10 +30,5 @@ class Home extends Response
 
         header("Location: " . $fetch);
         die();
-    }
-
-    public function test()
-    {
-        return [200, '<img src="static/qr.svg">'];
     }
 }

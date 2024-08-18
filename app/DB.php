@@ -38,7 +38,7 @@ class DB
 
         $offset = abs($page) * 10;
 
-        $sql = "SELECT * FROM links LIMIT 10 OFFSET :offset";
+        $sql = "SELECT * FROM links ORDER BY id DESC LIMIT 10 OFFSET :offset";
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
@@ -57,14 +57,36 @@ class DB
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':code', $code, PDO::PARAM_STR);
-        // try {
-        $stmt->execute();
-        $result = $stmt->fetch();
-        $add_visit = self::add_visit($code, $data);
-        return $result['link'];
-        // } catch (\Throwable $th) {
-        //     return 'https://google.com';
-        // }
+        try {
+            $stmt->execute();
+            $result = $stmt->fetch();
+            $add_visit = self::add_visit($code, $data);
+            return $result['link'];
+        } catch (\Throwable $th) {
+            return 'https://google.com';
+        }
+    }
+
+    public static function fetch_link_stats(string $code): array | bool
+    {
+        $db = self::$pdo;
+
+        $sql = "
+            SELECT visit.*, links.link, links.added  
+            FROM visit 
+            INNER JOIN links ON visit.code = links.code 
+            WHERE visit.code = :code
+        ";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':code', $code, PDO::PARAM_STR);
+        try {
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            return $result;
+        } catch (\Throwable $th) {
+            return false;
+        }
     }
 
     public static function if_exist(string $code): array | bool

@@ -17,7 +17,7 @@ class Stats extends Response
         $this->content = View::make(
             'stats',
             [
-                'title' => 'Stats'
+                'title' => 'Analytics'
             ]
         );
         return $this->response();
@@ -25,12 +25,26 @@ class Stats extends Response
 
     public function linkStats(string $data = ''): array
     {
-        echo $data;
+        $exist = (bool)DB::if_exist($data);
+
+        if (!$exist) {
+            return $this->index();
+        }
+
+        $stats = DB::fetch_link_stats($data);
+
+        if (empty($stats)) {
+            $view = 'link-no-stats';
+        } else {
+            $view = 'link-stats';
+        }
+
         $this->status = 200;
         $this->content = View::make(
-            'stats',
+            $view,
             [
-                'title' => '1Stats'
+                'title' => 'Analytics',
+                'stats' => $stats
             ]
         );
         return $this->response();
@@ -49,6 +63,7 @@ class Stats extends Response
 
         while ($if_exist) {
             $code = Helper::getCode();
+            $if_exist = (bool)DB::if_exist($code);
         }
 
         DB::add_link($link, $code);

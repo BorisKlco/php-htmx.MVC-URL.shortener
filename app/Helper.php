@@ -4,11 +4,21 @@ namespace App;
 
 class Helper
 {
+    public static function cdate($date): string
+    {
+        $convert = new \DateTime($date);
+        try {
+            return $convert->format('d/m/y');
+        } catch (\Throwable $th) {
+            return '';
+        }
+    }
+
     public static function ctime($time): string
     {
         $convert = new \DateTime($time);
         try {
-            return $convert->format('d/m/Y');
+            return $convert->format('d/m/y - H:i:s');
         } catch (\Throwable $th) {
             return '';
         }

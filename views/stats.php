@@ -4,8 +4,12 @@
     <?php
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 0;
     $stats = \App\DB::fetch_all($page);
+    if (count($stats) == 0) {
+        $page = 0;
+        $stats = \App\DB::fetch_all(0);
+    }
     ?>
-    <div class="table">
+    <div class="stats-table">
         <table>
             <thead>
                 <tr>
@@ -14,7 +18,6 @@
                 </tr>
             </thead>
             <tbody>
-
                 <?php foreach ($stats as $row) : ?>
                     <tr>
                         <td>
@@ -22,7 +25,7 @@
                                 <?= "https://yap.pw/i/" . $row["code"] ?>
                             </a>
                         </td>
-                        <td><?= \App\Helper::ctime($row["added"]) ?></td>
+                        <td><?= \App\Helper::cdate($row["added"]) ?></td>
                     </tr>
                 <?php endforeach ?>
             </tbody>
@@ -31,8 +34,15 @@
 
     <div class="pages">
         <?php
-        echo '<a href="?page=' . max(0, $page - 1) . '">Previous</a> | ';
-        echo '<a href="?page=' . ($page + 1) . '">Next</a>';
+        if ($page > 0) {
+            echo '<a href="?page=' . max(0, $page - 1) . '">Previous</a>';
+        }
+        if ($page > 0 && count($stats) > 9) {
+            echo ' | ';
+        }
+        if (count($stats) > 9) {
+            echo '<a href="?page=' . ($page + 1) . '">Next</a>';
+        }
         ?>
 
     </div>
