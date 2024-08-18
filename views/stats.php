@@ -21,8 +21,8 @@
                 <?php foreach ($stats as $row) : ?>
                     <tr>
                         <td>
-                            <a href=<?= "https://yap.pw/s/" . $row["code"] ?>>
-                                <?= "https://yap.pw/i/" . $row["code"] ?>
+                            <a href=<?= "https://" . DOMAIN . "/s/" . $row["code"] ?>>
+                                <?= "https://" . DOMAIN . "/i/" . $row["code"] ?>
                             </a>
                         </td>
                         <td><?= \App\Helper::cdate($row["added"]) ?></td>
